@@ -1,20 +1,24 @@
-name : test and deploy
+name: test and deploy
 
 on:
-    push:
-         branches: main
+  push:
+    branches:
+      - main
 
 jobs:
-    # unit test 
-    unit-test:
-        runs-on: ubunto-latest
-        steps:
+  # unit test
+  unit-test:
+    runs-on: ubuntu-latest
 
-            -name: clone repo 
-            uses: actions/checkout@v7
-            -run: ls -al
-            -name: test 
-            run: npm run test 
-    # build docker image 
-    # deploy
-   
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v4
+
+      - name: List files
+        run: ls -al
+
+      - name: Test
+        run: npm run test
+
+  # build docker image
+  # deploy
