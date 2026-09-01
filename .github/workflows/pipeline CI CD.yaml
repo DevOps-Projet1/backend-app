@@ -16,7 +16,9 @@ jobs:
       - run: ls -al
 
       - name: test
-        run: npm run test
+        run: |
+          npm install
+          npm run test
 
   # build docker image
   # deploy
