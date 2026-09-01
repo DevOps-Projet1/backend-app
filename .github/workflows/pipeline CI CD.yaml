@@ -25,5 +25,11 @@ jobs:
       runs-on: ubuntu-latest
       needs: unit-test
       steps:
-       - run: docker --version 
+       - name: clone repo
+         uses: actions/checkout@v4
+       
+       - name: build image 
+         run: docker build -t smartjob2026/back-session18 . 
+       - name: check image
+         run: docker images
   # deploy
