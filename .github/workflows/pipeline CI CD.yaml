@@ -29,7 +29,10 @@ jobs:
          uses: actions/checkout@v4
        
        - name: build image 
-         run: docker build -t smartjob2026/back-session18 . 
+         run: docker build -t smartjob2026/back-session18:v§{{github.run_number}} . 
+       - name: tag latest image
+         run: docker tag smartjob2026/back-session18:v§{{github.run_number}}  smartjob2026/back-session18: latest
+
        - name: check image
          run: docker images
           
@@ -39,5 +42,7 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
        - name: push image 
-         run: docker push smartjob2026/back-session18
+         run: docker push smartjob2026/back-session18:v§{{github.run_number}}
+       - name: push image 
+         run: docker push smartjob2026/back-session18:latest
   # deploy
